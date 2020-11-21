@@ -3,6 +3,7 @@ package request
 import (
 	"fmt"
 	"io/ioutil"
+	"time"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -23,6 +24,7 @@ func Get(url string, headers map[string]string) (*Response, error) {
 
 	client := &http.Client{
 		Jar:           sessionJar,
+		Timeout: 30 * time.Second,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
@@ -64,6 +66,7 @@ func Post(url, postdata string, headers map[string]string) (*Response, error) {
 
 	client := &http.Client{
 		Jar:           sessionJar,
+		Timeout: 30 * time.Second,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
@@ -105,6 +108,7 @@ func Delete(url string, headers map[string]string) (*Response, error) {
 
 	client := &http.Client{
 		Jar:           sessionJar,
+		Timeout: 30 * time.Second,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
@@ -146,6 +150,7 @@ func Put(url string, headers map[string]string) (*Response, error) {
 
 	client := &http.Client{
 		Jar:           sessionJar,
+		Timeout: 30 * time.Second,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
@@ -187,6 +192,7 @@ func Options(url string, headers map[string]string) (*Response, error) {
 
 	client := &http.Client{
 		Jar:           sessionJar,
+		Timeout: 30 * time.Second,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error { return http.ErrUseLastResponse },
 	}
 
